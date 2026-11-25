@@ -86,7 +86,6 @@ short DayOfWeekOrder(short Day, short Month, short Year)
     short a = (14 - Month) / 12;
     short y = Year - a;
     short m = Month + (12 * a) - 2;
-    // 0: Sun, 1: Mon, 2: Tue, 3: Wed, 4: Thu, 5: Fri, 6: Sat
     return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
 }
 
@@ -103,13 +102,13 @@ string DayShortName(short DayOfWeekOrder)
 
 bool IsEndOfWeek(stDate Date)
 {
-    return DayOfWeekOrder(Date) == 6; // Saturday
+    return DayOfWeekOrder(Date) == 6;
 }
 
 bool IsWeekEnd(stDate Date)
 {
     short DayIndex = DayOfWeekOrder(Date);
-    return (DayIndex == 5 || DayIndex == 6); // Friday & Saturday
+    return (DayIndex == 5 || DayIndex == 6);
 }
 
 bool IsBusinessDay(stDate Date)
@@ -191,36 +190,30 @@ int main()
     cout << "\nToday is " << DayShortName(DayOfWeekOrder(Date1)) << " , "
          << Date1.Day << "/" << Date1.Month << "/" << Date1.Year << endl;
 
-    //---------------------
     cout << "\nIs it End of Week?\n";
     if (IsEndOfWeek(Date1))
         cout << "Yes it is Saturday, it's end of week.";
     else
         cout << "No it's Not end of week.";
 
-    //---------------------
     cout << "\n\nIs it Weekend?\n";
     if (IsWeekEnd(Date1))
         cout << "Yes it is a week end.";
     else
         cout << "No today is " << DayShortName(DayOfWeekOrder(Date1)) << ", Not a weekend.";
 
-    //---------------------
     cout << "\n\nIs it Business Day?\n";
     if (IsBusinessDay(Date1))
         cout << "Yes it is a business day.";
     else
         cout << "No it is NOT a business day.";
 
-    //---------------------
     cout << "\n\nDays until end of week : "
          << DaysUntilTheEndOfWeek(Date1) << " Day(s).";
 
-    //---------------------
     cout << "\nDays until end of month : "
          << DaysUntilTheEndOfMonth(Date1) << " Day(s).";
 
-    //---------------------
     cout << "\nDays until end of year : "
          << DaysUntilTheEndOfYear(Date1) << " Day(s).\n";
 
