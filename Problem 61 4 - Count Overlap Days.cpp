@@ -104,10 +104,7 @@ enDateCompare CompareDates(stDate Date1, stDate Date2)
     if (IsDate1EqualDate2(Date1, Date2))
         return enDateCompare::Equal;
 
-    /* if (IsDate1AfterDate2(Date1,Date2))
-        return enDateCompare::After;*/
 
-        // this is faster
     return enDateCompare::After;
 }
 
