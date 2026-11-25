@@ -86,7 +86,6 @@ short DayOfWeekOrder(short Day, short Month, short Year)
     short a = (14 - Month) / 12;
     short y = Year - a;
     short m = Month + (12 * a) - 2;
-    // 0: Sun, 1: Mon, 2: Tue, 3: Wed, 4: Thu, 5: Fri, 6: Sat
     return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
 }
 
@@ -103,13 +102,13 @@ string DayShortName(short DayOfWeekOrder)
 
 bool IsEndOfWeek(stDate Date)
 {
-    return DayOfWeekOrder(Date) == 6; // Saturday
+    return DayOfWeekOrder(Date) == 6;
 }
 
 bool IsWeekEnd(stDate Date)
 {
     short DayIndex = DayOfWeekOrder(Date);
-    return (DayIndex == 5 || DayIndex == 6); // Friday & Saturday
+    return (DayIndex == 5 || DayIndex == 6);
 }
 
 bool IsBusinessDay(stDate Date)
